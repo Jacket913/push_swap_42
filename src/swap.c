@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:27:07 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 16:57:47 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:46:32 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	sa(t_stack **a)
 	(*a)->prev = (*a)->next->prev;
 	(*a)->next->next = tmp->next;
 	(*a)->next->prev = tmp->prev;
+	ft_putendl_fd("sa", 1);
 }
 
 void	sb(t_stack **b)
@@ -34,6 +35,7 @@ void	sb(t_stack **b)
 	(*b)->prev = (*b)->next->prev;
 	(*b)->next->next = tmp->next;
 	(*b)->next->prev = tmp->prev;
+	ft_putendl_fd("sb", 1);
 }
 
 void	ss(t_stack **a, t_stack **b)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 17:56:18 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/01/25 14:17:04 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:21:39 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 size_t	ft_safe_strlen(char *str)
 {
