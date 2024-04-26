@@ -1,7 +1,0 @@
-pushswap
-*.o
-*.d
-*.a
-objs
-.vscode
-.dist
