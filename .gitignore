@@ -3,3 +3,5 @@ pushswap
 *.d
 *.a
 objs
+.vscode
+.dist

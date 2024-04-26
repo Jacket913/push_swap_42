@@ -2,3 +2,5 @@
 *.d
 *.a
 objs
+.vscode
+.dist
