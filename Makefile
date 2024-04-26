@@ -60,9 +60,6 @@ ${OBJS_DIR}/%.o: ${SRC_DIR}/%.c
 	@mkdir -p ${OBJS_DIR}
 	@${CC} ${DEP_FLAGS} ${CFLAGS} ${INCLD_FLAG} -c $< -o $@
 
-.c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
 clean:
 	@printf "${PURPLE}[${NAME}] ${RED}Obliterating ${DEFAULT}${OBJS_DIR} files\n"
 	@${RM} ${OBJS_DIR}
