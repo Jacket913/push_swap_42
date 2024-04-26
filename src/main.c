@@ -3,16 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 16:35:17 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:46:15 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	init(int i)
-{
+// int	init(int i)
+// {
 	
+// }
+
+int main(void)
+{
+	return (0);
 }

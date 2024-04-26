@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:26:38 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 17:15:18 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:43:57 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ra(stack_t **a)
-{
+// void	ra(stack_t **a)
+// {
 
-}
+// }
 
-void	rb(stack_t **b)
-{
+// void	rb(stack_t **b)
+// {
 
-}
+// }
 
-void	rr(stack_t **a, stack_t **b)
-{
+// void	rr(stack_t **a, stack_t **b)
+// {
 
-}
+// }

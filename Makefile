@@ -45,8 +45,8 @@ SRC 		:= ${strip ${SRC}}
 OBJS 		:= ${patsubst %.c,${OBJS_DIR}/%.o,${SRC}}
 DEPS		:= ${patsubst %.c,${OBJS_DIR}/%.d,${SRC}}
 
-## MAKE RULES ##
-.PHONY: all
+## PROJECT ##
+.PHONY: all clean fclean re cleanlib fcleanlib relib norm
 all: ${NAME}
 
 ${NAME}: ${LIB} ${OBJS}
@@ -60,41 +60,31 @@ ${OBJS_DIR}/%.o: ${SRC_DIR}/%.c
 	@mkdir -p ${OBJS_DIR}
 	@${CC} ${DEP_FLAGS} ${CFLAGS} ${INCLD_FLAG} -c $< -o $@
 
-.c.o:
-	@${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-.PHONY: clean
 clean:
 	@printf "${PURPLE}[${NAME}] ${RED}Obliterating ${DEFAULT}${OBJS_DIR} files\n"
 	@${RM} ${OBJS_DIR}
 
-.PHONY: fclean
 fclean: clean
 	@printf "${PURPLE}[${NAME}] ${RED}Obliterating ${DEFAULT}${NAME}\n"
 	@${RM} ${NAME}
 
-.PHONY: re
 re: fclean all
 
 ## LIBFT RULES ##
 ${LIBFT}:
 	@make -C ${LIBFT_DIR} ${MAKE_FLAG}
 
-.PHONY: cleanlib
 cleanlib:
 	@make -C ${LIBFT_DIR} clean ${MAKE_FLAG}
 
-.PHONY: fcleanlib
 fcleanlib:
 	@make -C ${LIBFT_DIR} fclean ${MAKE_FLAG}
 	@printf "${DRED}[${LIBFT_DIR}] Lib obliterated\n"
 
-.PHONY: relib
 relib:
 	@make -C ${LIBFT_DIR} re ${MAKE_FLAG}
 
-### NORM ###
-.PHONY: norm
-norm: ; @make -C ${LIBFT_DIR} norm ${MAKE_FLAG}
-	@norminette ${SRC_DIR} ${INCLD_DIR} | awk '/Error/ {print; found=1} END \
-	{if {!found} {print "${PURPLE}[${NAME}] ${DEFAULT}Norm: ${BWHITE}OK${DEFAULT}"; exit 0 }; exit 1 }'
+## NORM ##
+norm: ; @make -C $(LIBFT_DIR) norm $(MAKE_FLAG)
+	@norminette $(SRC_DIR) $(INCLD_DIR) | awk '/Error/ {print; found=1} END \
+	{if (!found) {print "$(PURPLE)[$(NAME)] $(DEFAULT)Norm: $(BWHITE)OK$(DEFAULT)"; exit 0 }; exit 1 }'

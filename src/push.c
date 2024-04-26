@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:27:14 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 19:45:22 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:46:23 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ void	push(t_stack **src, t_stack **dest)
 void	pa(t_stack **a, t_stack **b)
 {
 	push(a, b);
+	ft_putendl_fd("pa", 1);
 }
 
 void	pb(t_stack **a, t_stack **b)
 {
 	push(b, a);
+	ft_putendl_fd("pb", 1);
 }

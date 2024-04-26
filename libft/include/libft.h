@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:09:50 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 15:02:12 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:22:47 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@
 # include <string.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <stdarg.h>
+
 
 /* GNL UTILS */
 # ifndef MAX_FD
 #  define MAX_FD 1024
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
 # endif
 
 /* FUNCTIONS */
@@ -80,5 +86,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 
 int		ft_printf(const char *input, ...);
+int		ft_putchar(int c);
+int		ft_putstr(char *s);
+int		pnbase(long n, int baselength, char *base);
+int		ft_print_ptr(void *ptr);
+int		put_ptr(unsigned long n, unsigned long baselength, char *base);
 
 #endif

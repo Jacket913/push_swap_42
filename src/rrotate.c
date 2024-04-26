@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   rrotate.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:26:46 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 17:14:21 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/04/26 10:43:55 by andymalgonn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-void	rra(t_stack **a)
-{
+// void	rra(t_stack **a)
+// {
 
-}
+// }
 
-void	rrb(t_stack **b)
-{
+// void	rrb(t_stack **b)
+// {
 
-}
+// }
 
-void	rrr(t_stack **a, t_stack **b)
-{
+// void	rrr(t_stack **a, t_stack **b)
+// {
 
-}
+// }
