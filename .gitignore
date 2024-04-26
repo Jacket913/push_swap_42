@@ -1,0 +1,5 @@
+pushswap
+*.o
+*.d
+*.a
+objs
