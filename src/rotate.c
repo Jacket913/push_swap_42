@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:26:38 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/30 18:35:40 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/05/07 18:03:48 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	rb(t_stack **b)
 	ft_putendl_fd("rb", 1);
 }
 
-void	rr(stack_t **a, stack_t **b)
+void	rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);
