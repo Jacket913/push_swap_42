@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/23 17:17:59 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/05/30 16:12:24 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,35 +49,53 @@ void	ft_memdel(void *ptr)
 	ptr = NULL;
 }
 
-int	main(int ac, char *av)
+void	print(t_stack *x)
 {
-	size_t	i;
+	t_stack	*tmp;
 
-	i = 0;
-	if (ac < 2)
-		return (0);
-	while (ac > 1)
-		if (!check_num(av[i]))
-			return (0);
-		ac--;
-		i++;
+	tmp = x;
+	while (tmp)
+	{
+		ft_printf("%d ", tmp->value);
+		tmp = tmp->next;
 	}
-	//while (*av && ac > 1)
-	//{
-	//	t_list *list_a = NULL;
-	//	list_a = lst_new(ft_atoi(*av));
-	//	if(!list_a)
-	//		return (0);
-	//	av++;
-	//	while(ac--)
-	//	{
-	//		list_a = lst_add(ft_atoi(*av),  &list_a);
-	//		if(!list_a)
-	//			return (0);
-	//	}
-	//	if (!check_num(*av))
-	//		return (0);
-	//	av++;
-	//}
-	return (0);
+	ft_putchar_fd('\n', 1);
+}
+
+
+int	main()
+{
+	t_stack *a;
+	t_stack *b;
+
+	a = malloc(sizeof(t_stack));
+	b = malloc(sizeof(t_stack));
+	a->next = malloc(sizeof(t_stack));
+	b->next = malloc(sizeof(t_stack));
+	a->next->next = malloc(sizeof(t_stack));
+	b->next->next = malloc(sizeof(t_stack));
+
+	a->next->prev = a;
+    a->next->next->prev = a->next;
+    a->next->next->next = NULL;
+    a->value = 5;
+    a->next->value = 6;
+    a->next->next->value = 7;
+
+    b->next->prev = b;
+    b->next->next->prev = b->next;
+    b->next->next->next = NULL;
+    b->value = 5;
+    b->next->value = 6;
+    b->next->next->value = 7;
+
+	//pa(&a, &b);
+	//pb(&b, &a);
+	//ra(&a);
+	//rb(&b);
+	//rra(&a);
+	//rrb(&b);
+	sa(&a);
+	//sb(&b);
+	(print(a), print(b));
 }

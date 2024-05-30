@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:26:46 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/30 18:54:05 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/05/30 16:55:38 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	rra(t_stack **a)
 		first->prev = nfirst;
 		nfirst->next = first;
 		*a = nfirst;
-		nfirst->prev->next = NULL; //set new last ->next to NULL
+		nfirst->prev->next = NULL;
 		nfirst->prev = NULL;
 		ft_putendl_fd("rra", 1);
 	}
@@ -51,7 +51,7 @@ void	rrb(t_stack **b)
 		first->prev = nfirst;
 		nfirst->next = first;
 		*b = nfirst;
-		nfirst->prev->next = NULL; //set new last ->next to NULL
+		nfirst->prev->next = NULL;
 		nfirst->prev = NULL;
 		ft_putendl_fd("rrb", 1);
 	}

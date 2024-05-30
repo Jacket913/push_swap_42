@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:26:38 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/07 18:03:48 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/05/30 16:04:27 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	ra(t_stack **a)
 	t_stack *nlast;
 	t_stack *last;
 
-	if(!*a)
+	if(!*a || !(*a)->next)
 		return ;
 	nlast = *a;
 	last = *a;
 	while (last->next)
 		last = last->next;
+	*a = nlast->next;
 	last->next = nlast;
 	nlast->prev = last;
-	*a = nlast->next;
 	nlast->next = NULL;
 	(*a)->prev = NULL;
 	ft_putendl_fd("ra", 1);
@@ -36,7 +36,7 @@ void	rb(t_stack **b)
 	t_stack *nlast;
 	t_stack *last;
 
-	if(!*b)
+	if(!*b || !(*b)->next)
 		return ;
 	nlast = *b;
 	last = *b;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:27:07 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/26 10:46:32 by andymalgonn      ###   ########.fr       */
+/*   Updated: 2024/05/30 16:54:54 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,34 @@ void	sa(t_stack **a)
 {
 	t_stack	*tmp;
 
-	tmp->next = (*a)->next;
-	tmp->prev = (*a)->prev;
-	(*a)->next = (*a)->next->next;
-	(*a)->prev = (*a)->next->prev;
-	(*a)->next->next = tmp->next;
-	(*a)->next->prev = tmp->prev;
-	ft_putendl_fd("sa", 1);
+    if (*a == NULL || (*a)->next == NULL)
+        return;
+
+    tmp = *a;
+    *a = (*a)->next;
+    tmp->next = (*a)->next;
+    (*a)->next = tmp;
+    tmp->prev = *a;
+    if (tmp->next != NULL)
+        tmp->next->prev = tmp;
+    ft_putendl_fd("sa", 1);
 }
 
 void	sb(t_stack **b)
 {
 	t_stack	*tmp;
 
-	tmp->next = (*b)->next;
-	tmp->prev = (*b)->prev;
-	(*b)->next = (*b)->next->next;
-	(*b)->prev = (*b)->next->prev;
-	(*b)->next->next = tmp->next;
-	(*b)->next->prev = tmp->prev;
-	ft_putendl_fd("sb", 1);
+    if (*b == NULL || (*b)->next == NULL)
+        return;
+
+    tmp = *b;
+    *b = (*b)->next;
+    tmp->next = (*b)->next;
+    (*b)->next = tmp;
+    tmp->prev = *b;
+    if (tmp->next != NULL)
+        tmp->next->prev = tmp;
+    ft_putendl_fd("sb", 1);
 }
 
 void	ss(t_stack **a, t_stack **b)

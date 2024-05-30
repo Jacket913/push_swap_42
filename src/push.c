@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:27:14 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/26 10:46:23 by andymalgonn      ###   ########.fr       */
+/*   Updated: 2024/05/30 15:48:40 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void	push(t_stack **src, t_stack **dest)
 	tmp->next = *dest;
 	if (*dest)
 		(*dest)->prev = tmp;
+	tmp->next = *dest;
+	*dest = tmp;
 }
 
 void	pa(t_stack **a, t_stack **b)

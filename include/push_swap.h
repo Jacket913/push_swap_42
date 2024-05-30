@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:30:53 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/25 19:46:39 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/05/30 15:35:28 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 /* FUNCTIONS */
 typedef struct	s_stack
 {
-	int	value;
 	struct s_stack	*next;
 	struct s_stack	*prev;
+	int  value;
 }				t_stack;
 
 void	sa(t_stack **a);
