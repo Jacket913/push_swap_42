@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/30 17:11:11 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/11 14:53:44 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,6 @@ int	init(int value, t_stack **a)
 	new->value = value;
 	new->next = NULL;
 	return (1);
-}
-
-void	ft_memdel(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
 }
 
 void	print(t_stack *x)

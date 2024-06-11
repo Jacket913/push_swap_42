@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:05:58 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/11 14:43:50 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/11 14:54:01 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ void	**ft_fsplit(char **split)
 	return (NULL);
 }
 
+void	ft_memdel(void *ptr)
+{
+	free(ptr);
+	ptr = NULL;
+}
+
 size_t	stacksize(t_stack *stack)
 {
 	size_t	i;
@@ -36,3 +42,21 @@ size_t	stacksize(t_stack *stack)
 	return (i);
 }
 
+int	check_dup(t_stack **a)
+{
+	t_stack	*tmp;
+
+	tmp = *a;
+	while (*a)
+	{
+		tmp = (*a)->next;
+		while (tmp)
+		{
+			if ((*a)->value == tmp->value)
+				return (1);
+			tmp = tmp->next;
+		}
+		*a = (*a)->next;
+	}
+	return (0);
+}
