@@ -6,21 +6,11 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:17:42 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/30 15:34:40 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/12 17:02:18 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
 
 void	ft_bzero(void *s, size_t n)
 {

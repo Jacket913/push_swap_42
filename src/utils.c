@@ -5,28 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 14:05:58 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/11 14:54:01 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/06/12 18:03:23 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	**ft_fsplit(char **split)
+void	free_list(t_stack *x)
 {
-	int	i;
+	t_stack	*tmp;
 
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-	return (NULL);
-}
-
-void	ft_memdel(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
+	if (!x)
+		return ;
+	while (x)
+	{
+		tmp = x->next;
+		free(x);
+		x = tmp;
+	}
 }
 
 size_t	stacksize(t_stack *stack)
@@ -42,21 +39,21 @@ size_t	stacksize(t_stack *stack)
 	return (i);
 }
 
-int	check_dup(t_stack **a)
+void	print(t_stack *x)
 {
 	t_stack	*tmp;
 
-	tmp = *a;
-	while (*a)
+	tmp = x;
+	while (tmp)
 	{
-		tmp = (*a)->next;
-		while (tmp)
-		{
-			if ((*a)->value == tmp->value)
-				return (1);
-			tmp = tmp->next;
-		}
-		*a = (*a)->next;
+		ft_printf("%d ", tmp->value);
+		tmp = tmp->next;
 	}
-	return (0);
+	ft_putchar_fd('\n', 1);
+}
+
+void	error_arg(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

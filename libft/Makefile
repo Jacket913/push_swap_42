@@ -75,14 +75,15 @@ SRC = 	ft_isalpha.c \
 		ft_printf_utils.c \
 		ft_printf.c \
 		get_next_line.c \
-		get_next_line_utils.c
+		get_next_line_utils.c \
+		ft_fsplit.c
 INCLUDES	:=	$(INCLD_DIR)
 INCLD_FLAG 	:= 	$(addprefix -I , $(INCLUDES))
 OBJS 		:= 	$(patsubst %.c,$(OBJS_DIR)/%.o,$(SRC))
 DEPS		:= 	$(patsubst %.c,$(OBJS_DIR)/%.d,$(SRC))
 
 ## PROJECT ##
-.PHONY : all clean fclean re norm 
+.PHONY : all clean fclean re norm
 all: $(NAME)
 
 $(NAME): $(OBJS)

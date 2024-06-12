@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:09:32 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/11 14:52:12 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/12 17:19:05 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 void	sort_2(t_stack **a)
 {
 	if ((*a)->value > (*a)->next->value)
-		swap(a);
+		sa(a);
 }
 
 void	sort_3(t_stack **a)
 {
-	if ((*a)->value > (*a)->next->value && (*a)->value > (*a)->next->next->value)
+	if ((*a)->value > (*a)->next->value &&
+		(*a)->value > (*a)->next->next->value)
 	{
 		ra(a);
 		sort_2(a);
 	}
 	else if ((*a)->value < (*a)->next->value &&
-			(*a)->next->value > (*a)->next->next->value)
+		(*a)->next->value > (*a)->next->next->value)
 	{
 		rra(a);
 		sort_2(a);
 	}
 	else if ((*a)->value < (*a)->next->next->value &&
-			(*a)->next->value < (*a)->next->next->value)
+		(*a)->next->value < (*a)->next->next->value)
 		sort_2(a);
 }
 

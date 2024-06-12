@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/11 14:53:44 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/12 18:10:04 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,17 +60,6 @@ int	check_arg(char *av, t_stack **a)
 	return (1);
 }
 
-int	check_num(char *str)
-{
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		str++;
-	}
-	return (1);
-}
-
 int	init(int value, t_stack **a)
 {
 	t_stack	*new;
@@ -91,53 +80,33 @@ int	init(int value, t_stack **a)
 	return (1);
 }
 
-void	print(t_stack *x)
+void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
+	int	i;
 
-	tmp = x;
-	while (tmp)
+	i = 0;
+	if (ac < 2)
+		return ;
+	while (++i < ac)
 	{
-		ft_printf("%d ", tmp->value);
-		tmp = tmp->next;
+		if (!check_arg(av[i], a))
+			(free_list(*a), error_arg());
 	}
-	ft_putchar_fd('\n', 1);
+	if (check_dup(*a))
+		return (free_list(*a), free_list(*b), error_arg());
+	if (check_sorted(*a))
+		return (free_list(*a), free_list(*b));
+	start_sort(a);
 }
 
-
-int	main()
+int	main(int ac, char *av[])
 {
-	t_stack *a;
-	t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
-	a = malloc(sizeof(t_stack));
-	b = malloc(sizeof(t_stack));
-	a->next = malloc(sizeof(t_stack));
-	b->next = malloc(sizeof(t_stack));
-	a->next->next = malloc(sizeof(t_stack));
-	b->next->next = malloc(sizeof(t_stack));
-
-	a->next->prev = a;
-    a->next->next->prev = a->next;
-    a->next->next->next = NULL;
-    a->value = 5;
-    a->next->value = 6;
-    a->next->next->value = 7;
-
-    b->next->prev = b;
-    b->next->next->prev = b->next;
-    b->next->next->next = NULL;
-    b->value = 5;
-    b->next->value = 6;
-    b->next->next->value = 7;
-
-	//pa(&a, &b);
-	//pb(&b, &a);
-	//ra(&a);
-	//rb(&b);
-	//rra(&a);
-	//rrb(&b);
-	sa(&a);
-	//sb(&b);
-	(print(a), print(b));
+	a = NULL;
+	b = NULL;
+	push_swap (ac, av, &a, &b);
+	print(a);
+	return (0);
 }

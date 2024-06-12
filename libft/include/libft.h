@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: andymalgonne <andymalgonne@student.42.f    +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 14:09:50 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/04/26 10:22:47 by andymalgonn      ###   ########.fr       */
+/*   Updated: 2024/06/12 17:00:23 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,7 @@ int		ft_putstr(char *s);
 int		pnbase(long n, int baselength, char *base);
 int		ft_print_ptr(void *ptr);
 int		put_ptr(unsigned long n, unsigned long baselength, char *base);
+
+void	**ft_fsplit(char **split);
 
 #endif
