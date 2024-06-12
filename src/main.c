@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/12 18:10:04 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/12 19:00:26 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,26 @@ int	init_stack(int value, t_stack **a)
 		last = last->next;
 	last->next = tmp;
 	return (tmp->prev = last, 1);
+}
+
+int	init(int value, t_stack **a)
+{
+	t_stack	*new;
+	t_stack	*oldlast;
+
+	if (!*a)
+		return (0);
+	oldlast = *a;
+	while (oldlast->next)
+		oldlast = oldlast->next;
+	new = ft_calloc(1, sizeof(t_stack));
+	if (!new)
+		return (0);
+	oldlast->next = new;
+	new->prev = oldlast;
+	new->value = value;
+	new->next = NULL;
+	return (1);
 }
 
 int	check_arg(char *av, t_stack **a)
@@ -60,27 +80,7 @@ int	check_arg(char *av, t_stack **a)
 	return (1);
 }
 
-int	init(int value, t_stack **a)
-{
-	t_stack	*new;
-	t_stack	*oldlast;
-
-	if (!*a)
-		return (0);
-	oldlast = *a;
-	while (oldlast->next)
-		oldlast = oldlast->next;
-	new = ft_calloc(1, sizeof(t_stack));
-	if (!new)
-		return (0);
-	oldlast->next = new;
-	new->prev = oldlast;
-	new->value = value;
-	new->next = NULL;
-	return (1);
-}
-
-void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
+void	push_swap(int ac, char *av[], t_stack **a)
 {
 	int	i;
 
@@ -93,20 +93,20 @@ void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 			(free_list(*a), error_arg());
 	}
 	if (check_dup(*a))
-		return (free_list(*a), free_list(*b), error_arg());
-	if (check_sorted(*a))
-		return (free_list(*a), free_list(*b));
+		return (free_list(*a));//, free_list(*b), error_arg());
+	if (!check_sorted(a))
+		return (free_list(*a));//, free_list(*b));
 	start_sort(a);
 }
 
 int	main(int ac, char *av[])
 {
 	t_stack	*a;
-	t_stack	*b;
+	//t_stack	*b;
 
 	a = NULL;
-	b = NULL;
-	push_swap (ac, av, &a, &b);
+	//b = NULL;
+	push_swap (ac, av, &a);
 	print(a);
 	return (0);
 }
