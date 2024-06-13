@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:05:58 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/12 19:02:42 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/13 18:29:07 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ int	check_dup(t_stack *a)
 	return (0);
 }
 
-int	check_sorted(t_stack **a)
+int	check_sorted(t_stack *a)
 {
 	t_stack	*tmp;
 
-	while (*a)
+	while (a)
 	{
-		tmp = (*a)->next;
+		tmp = (a)->next;
 		while (tmp)
 		{
-			if ((*a)->value > tmp->value)
+			if ((a)->value > tmp->value)
 				return (1);
 			tmp = tmp->next;
 		}
-		*a = (*a)->next;
+		a = (a)->next;
 	}
 	return (0);
 }

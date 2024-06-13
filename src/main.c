@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 18:05:06 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/13 18:30:19 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 	}
 	if (check_dup(*a))
 		return (free_list(*a), free_list(*b), error_arg(), 0);
-	if (!check_sorted(a))
+	if (!check_sorted(*a))
 		return (free_list(*a), free_list(*b), error_arg(), 0);
 	indexing(a);
 	pushonb(a, b);
