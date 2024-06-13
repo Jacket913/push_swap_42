@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 17:53:55 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/13 19:14:28 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	print(t_stack *x)
 	tmp = x;
 	while (tmp)
 	{
-		ft_printf("%d ", tmp->value);
+		ft_printf("Value : %d,  Index : %d / ", tmp->value, tmp->index);
 		tmp = tmp->next;
 	}
 	ft_putchar_fd('\n', 1);

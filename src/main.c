@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 18:59:11 by acroue           ###   ########.fr       */
+/*   Updated: 2024/06/13 19:09:06 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,6 @@ int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 	return (1);
 }
 
-void	printindex(t_stack *tab)
-{
-
-	size_t	alec	= stacksize(tab);
-	for (size_t i = 0; i < alec; i++)
-	{
-		printf("%d\n", tab->index);
-		tab = tab->next;
-	}
-}
-
 int	main(int ac, char *av[])
 {
 	t_stack	*a;
@@ -123,7 +112,6 @@ int	main(int ac, char *av[])
 	if (push_swap (ac, av, &a, &b) == 0)
 		return (0);
 	(print(a), print(b));
-	printindex(a), printindex(b);
 	(free_list(a), free_list(b));
 	return (0);
 }

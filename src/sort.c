@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 18:58:08 by acroue           ###   ########.fr       */
+/*   Updated: 2024/06/13 19:35:13 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,22 @@ void	indexing(t_stack **a)
 {
 	t_stack	*lowest;
 	t_stack	*tmp;
-	int		i;
-	int		size;
+	size_t		i;
 
-	size = stacksize(*a);
-	i = size;
-	while (size--)
+	i = 1;
+	while (i <= stacksize(*a))
 	{
 		tmp = *a;
 		lowest = *a;
-		printf("tmp:%d\n", tmp->value);
 		while (lowest->index)
 			lowest = lowest->next;
 		while (tmp)
-			{
-				if (lowest > tmp && !tmp->index)
-					lowest = tmp;
-				tmp = tmp->next;
-			}
+		{
+			if (lowest->value > tmp->value && !tmp->index)
+				lowest = tmp;
+			tmp = tmp->next;
+		}
 		lowest->index = i;
-		printf("%d\t%d\n", lowest->value, lowest->index);
-		i--;
+		i++;
 	}
 }
