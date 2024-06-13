@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:30:53 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 17:41:42 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/13 18:29:42 by acroue           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	rra(t_stack **a);
 void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		check_dup(t_stack *a);
-int		check_sorted(t_stack **a);
+int		check_sorted(t_stack *a);
 size_t	stacksize(t_stack *stack);
 void	ft_memdel(void *ptr);
 void	**ft_fsplit(char **split);
