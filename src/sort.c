@@ -1,59 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 17:53:55 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/06/13 17:57:52 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	free_list(t_stack *x)
+void	pushonb(t_stack **a, t_stack **b)
 {
-	t_stack	*tmp;
-
-	if (!x)
-		return ;
-	while (x)
-	{
-		tmp = x->next;
-		free(x);
-		x = tmp;
-	}
+	while (stacksize(*a) > 3)
+		pa(a, b);
 }
 
-size_t	stacksize(t_stack *stack)
+void	indexing(t_stack **a)
 {
-	size_t	i;
+	t_stack *lowest;
+	t_stack	*tmp;
+	int		i;
+	int		size;
 
 	i = 0;
-	while (stack)
+	size = stacksize(*a);
+	tmp = *a;
+	lowest = *a;
+	while (size--)
 	{
-		stack = stack->next;
+		while (tmp)
+			{
+				if (lowest > tmp && !tmp->index)
+					lowest = tmp;
+				tmp = tmp->next;
+			}
+		lowest->index = i;
 		i++;
 	}
-	return (i);
-}
-
-void	print(t_stack *x)
-{
-	t_stack	*tmp;
-
-	tmp = x;
-	while (tmp)
-	{
-		ft_printf("%d ", tmp->value);
-		tmp = tmp->next;
-	}
-	ft_putchar_fd('\n', 1);
-}
-
-void	error_arg(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
 }

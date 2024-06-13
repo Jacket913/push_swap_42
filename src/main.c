@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/12 19:00:26 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/13 18:05:06 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,33 +80,38 @@ int	check_arg(char *av, t_stack **a)
 	return (1);
 }
 
-void	push_swap(int ac, char *av[], t_stack **a)
+int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 0;
 	if (ac < 2)
-		return ;
+		return (0);
 	while (++i < ac)
 	{
 		if (!check_arg(av[i], a))
-			(free_list(*a), error_arg());
+			return (free_list(*a), error_arg(), 0);
 	}
 	if (check_dup(*a))
-		return (free_list(*a));//, free_list(*b), error_arg());
+		return (free_list(*a), free_list(*b), error_arg(), 0);
 	if (!check_sorted(a))
-		return (free_list(*a));//, free_list(*b));
+		return (free_list(*a), free_list(*b), error_arg(), 0);
+	indexing(a);
+	pushonb(a, b);
 	start_sort(a);
+	return (1);
 }
 
 int	main(int ac, char *av[])
 {
 	t_stack	*a;
-	//t_stack	*b;
+	t_stack	*b;
 
 	a = NULL;
-	//b = NULL;
-	push_swap (ac, av, &a);
-	print(a);
+	b = NULL;
+	if (push_swap (ac, av, &a, &b) == 0)
+		return (0);
+	(print(a), print(b));
+	(free_list(a), free_list(b));
 	return (0);
 }

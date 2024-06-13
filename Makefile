@@ -46,7 +46,8 @@ swap.c \
 rrotate.c \
 start_sort.c \
 utils.c \
-checks.c
+checks.c \
+sort.c
 
 SRC 		:= ${strip ${SRC}}
 OBJS 		:= ${patsubst %.c,${OBJS_DIR}/%.o,${SRC}}
