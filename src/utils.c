@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 19:14:28 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/19 18:56:45 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	free_list(t_stack *x)
 	}
 }
 
-size_t	stacksize(t_stack *stack)
+int	stacksize(t_stack *stack)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (stack)

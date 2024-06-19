@@ -6,28 +6,11 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 17:48:45 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/19 19:03:27 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	pushonb(t_stack **a, t_stack **b)
-{
-	while (stacksize(*a) > 3)
-		pa(a, b);
-}
-
-//t_stack	*get_new(t_stack *a)
-//{
-//	while (a->next)
-//	{
-//		if (a->index == 0)
-//			return (a);
-//		a = a->next;
-//	}
-//	return (a);
-//}
 
 void	indexing(t_stack **a)
 {
@@ -77,54 +60,41 @@ void	rotatelist(t_stack **x, t_move *m, int which_list)
 	}
 }
 
-void	whichrotate(t_stack *x, t_move *m, int index)
+void	pre_sort(t_stack **a, t_stack **b)
 {
-	t_move	tmpm;
-	t_stack	*tmpx;
+	int	i;
 
-	tmpx = x;
-	while (tmpx->next)
-		tmpx = tmpx->next;
-	m->rotate = 0;
-	tmpm.rotate = 0;
-	while (tmpx->index != index)
+	i = 0;
+	assign_index(*a);
+	litle_sort(a);
+	if (stack_size(*a) > 3)
 	{
-		tmpm.rotate--;
-		tmpx = tmpx->prev;
+		while (stack_size(*a) - i > 3 && i < stack_size(*a) / 2)
+		{
+			if ((*a)->index < stack_size(*a) / 2)
+			{
+				i++;
+				pb(a, b);
+			}
+			else
+				ra(a);
+		}
+		while (++i <= stack_size(*a) - 3)
+			pb(a, b);
+		sort_three(a);
 	}
-	while (x->index != index)
-	{
-		m->rotate++;
-		x = x->next;
-	}
-	printf("m->rotate = %d\n", m->rotate);
-	printf("tmpm.rotate = %d\n", tmpm.rotate);
-	if (m->rotate > -tmpm.rotate)
-		m->rotate = tmpm.rotate;
-	printf("m->rotate = %d\n", m->rotate);
 }
 
-void	cheaper_move(t_stack *a, t_stack *b, t_move *ma, t_move *mb)
+void	cost_and_sort(t_stack **a, t_stack **b)
 {
-	t_move	cheaper;
-	t_stack	*tmp;
-	int	index;
-	int	sum;
+	t_move	move_a;
+	t_move	move_b;
 
-	tmp = b;
-	cheaper.rotate = -1;
-	while (tmp)
+	while (*b)
 	{
-		whichrotate(a, ma, tmp->index);
-		whichrotate(b, mb, tmp->index);
-		sum = abs(ma->rotate) + abs(mb->rotate);
-		if (cheaper.rotate == -1 || cheaper.rotate > sum)
-		{
-			cheaper.rotate = ma->rotate + mb->rotate;
-			index = tmp->index;
-		}
-		tmp = tmp->next;
+		cheaper_move(*a, *b, &move_a, &move_b);
+		rotatelist(a, &move_a, 0);
+		rotatelist(b, &move_b, 1);
+		pa(a, b);
 	}
-	whichrotate(a, ma, index);
-	whichrotate(b, mb, index);
 }
