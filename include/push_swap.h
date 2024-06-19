@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:30:53 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 18:29:42 by acroue           ###   ########.fr       */
+/*   Updated: 2024/06/19 16:40:34 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct	s_stack
 	int		value;
 	int		index;
 }				t_stack;
+
+typedef struct s_move
+{
+	int		rotate;
+}				t_move;
 
 void	sa(t_stack **a);
 void	sb(t_stack **b);
