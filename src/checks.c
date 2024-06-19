@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acroue <acroue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:05:58 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 18:29:07 by acroue           ###   ########.fr       */
+/*   Updated: 2024/06/19 19:06:19 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	check_sorted(t_stack *a)
 		while (tmp)
 		{
 			if ((a)->value > tmp->value)
-				return (1);
+				return (0);
 			tmp = tmp->next;
 		}
 		a = (a)->next;
 	}
-	return (0);
+	return (1);
 }

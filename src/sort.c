@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 19:03:27 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/19 19:09:51 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	pre_sort(t_stack **a, t_stack **b)
 	}
 }
 
-void	cost_and_sort(t_stack **a, t_stack **b)
+void	move_from_cheapest(t_stack **a, t_stack **b)
 {
 	t_move	move_a;
 	t_move	move_b;

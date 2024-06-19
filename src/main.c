@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/13 19:09:06 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/19 19:12:02 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,11 @@ int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 	}
 	if (check_dup(*a))
 		return (free_list(*a), free_list(*b), error_arg(), 0);
-	if (!check_sorted(*a))
+	if (check_sorted(*a))
 		return (free_list(*a), free_list(*b), error_arg(), 0);
-	indexing(a);
-	pushonb(a, b);
-	start_sort(a);
-	return (1);
+	pre_sort(a, b);
+	move_from_cheapest(a, b);
+	return (free_list(a), free_list(b), 1);
 }
 
 int	main(int ac, char *av[])
