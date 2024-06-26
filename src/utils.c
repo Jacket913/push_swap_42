@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 18:56:45 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:24:35 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,18 @@ int	stacksize(t_stack *stack)
 	return (i);
 }
 
-void	print(t_stack *x)
-{
-	t_stack	*tmp;
+//void	print(t_stack *x)
+//{
+//	t_stack	*tmp;
 
-	tmp = x;
-	while (tmp)
-	{
-		ft_printf("Value : %d,  Index : %d / ", tmp->value, tmp->index);
-		tmp = tmp->next;
-	}
-	ft_putchar_fd('\n', 1);
-}
+//	tmp = x;
+//	while (tmp)
+//	{
+//		ft_printf("Value : %d,  Index : %d / ", tmp->value, tmp->index);
+//		tmp = tmp->next;
+//	}
+//	ft_putchar_fd('\n', 1);
+//}
 
 void	error_arg(void)
 {

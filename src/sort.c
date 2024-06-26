@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 19:09:51 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:15:36 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	indexing(t_stack **a)
 {
 	t_stack	*lowest;
 	t_stack	*tmp;
-	size_t		i;
+	int		i;
 
 	i = 1;
 	while (i <= stacksize(*a))
@@ -65,13 +65,13 @@ void	pre_sort(t_stack **a, t_stack **b)
 	int	i;
 
 	i = 0;
-	assign_index(*a);
-	litle_sort(a);
-	if (stack_size(*a) > 3)
+	indexing(a);
+	start_sort(a);
+	if (stacksize(*a) > 3)
 	{
-		while (stack_size(*a) - i > 3 && i < stack_size(*a) / 2)
+		while (stacksize(*a) - i > 3 && i < stacksize(*a) / 2)
 		{
-			if ((*a)->index < stack_size(*a) / 2)
+			if ((*a)->index < stacksize(*a) / 2)
 			{
 				i++;
 				pb(a, b);
@@ -79,9 +79,9 @@ void	pre_sort(t_stack **a, t_stack **b)
 			else
 				ra(a);
 		}
-		while (++i <= stack_size(*a) - 3)
+		while (++i <= stacksize(*a) - 3)
 			pb(a, b);
-		sort_three(a);
+		sort_3(a);
 	}
 }
 

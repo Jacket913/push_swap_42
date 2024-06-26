@@ -47,7 +47,8 @@ rrotate.c \
 start_sort.c \
 utils.c \
 checks.c \
-sort.c
+sort.c \
+cost.c
 
 SRC 		:= ${strip ${SRC}}
 OBJS 		:= ${patsubst %.c,${OBJS_DIR}/%.o,${SRC}}

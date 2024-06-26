@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:30:53 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 19:10:00 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:05:12 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	rrb(t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 int		check_dup(t_stack *a);
 int		check_sorted(t_stack *a);
-size_t	stacksize(t_stack *stack);
+int		stacksize(t_stack *stack);
 void	sort_2(t_stack **a);
 void	sort_3(t_stack **a);
 void	start_sort(t_stack **a);

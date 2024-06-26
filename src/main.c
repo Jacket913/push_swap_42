@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 19:12:02 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/06/26 11:41:11 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,30 @@ int	check_arg(char *av, t_stack **a)
 	return (1);
 }
 
+void	sort_in_position(t_stack **a)
+{
+	t_stack		*tmp;
+	size_t		smallest_pos;
+	size_t		len;
+
+	tmp = *a;
+	len = 0;
+	smallest_pos = 0;
+	while (tmp)
+	{
+		if (tmp->index == 0)
+			smallest_pos = len;
+		len++;
+		tmp = tmp->next;
+	}
+	if ((len + 1) / 2 < smallest_pos)
+		while (smallest_pos++ < len)
+			rra(a);
+	else
+		while (smallest_pos-- > 0)
+			ra(a);
+}
+
 int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 {
 	int	i;
@@ -98,7 +122,8 @@ int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 		return (free_list(*a), free_list(*b), error_arg(), 0);
 	pre_sort(a, b);
 	move_from_cheapest(a, b);
-	return (free_list(a), free_list(b), 1);
+	sort_in_position(a);
+	return (free_list(*a), free_list(*b), 1);
 }
 
 int	main(int ac, char *av[])
@@ -108,9 +133,8 @@ int	main(int ac, char *av[])
 
 	a = NULL;
 	b = NULL;
-	if (push_swap (ac, av, &a, &b) == 0)
-		return (0);
-	(print(a), print(b));
+	push_swap (ac, av, &a, &b);
+	//(print(a), print(b));
 	(free_list(a), free_list(b));
-	return (0);
+	return (1);
 }
