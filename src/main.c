@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:26:02 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/09/25 16:12:23 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/09/25 16:31:27 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 		return (free_list(*a), free_list(*b), error_arg());
 	if (check_sorted(*a))
 		return (free_list(*a), free_list(*b));
-	if (check_sorted(*a))
-		return (free_list(*a));
 	pre_sort(a, b);
 	cost_and_sort(a, b);
 	if (!check_sorted(*a))

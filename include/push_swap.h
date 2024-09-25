@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:46:56 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/09/25 16:21:06 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/09/25 16:37:40 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ int			find_location(t_stack *a, int index, int *biggest);
 void		ra_or_rra(t_stack *x, t_move *dir_x, int index);
 void		cheapermove(t_stack *a, t_stack *b, t_move *dir_a, t_move *dir_b);
 
+// main.c
+int			init_stack(int value, t_stack **a);
+void		push_swap(int ac, char *av[], t_stack **a, t_stack **b);
+
 // push.c
-static void	push(t_stack **a, t_stack **b);
 void		pa(t_stack **a, t_stack **b);
 void		pb(t_stack **a, t_stack **b);
 
