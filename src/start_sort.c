@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:26:42 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/09/25 12:30:50 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/09/25 16:16:17 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,31 @@ void	start_sort(t_stack **a)
 		sort_two(a);
 	else if (stack_size(*a) == 3)
 		sort_three(a);
+}
+
+void	pre_sort(t_stack **a, t_stack **b)
+{
+	size_t	size;
+	size_t	i;
+
+	i = 0;
+	size = stack_size(*a);
+	assign_index(*a);
+	start_sort(a);
+	if (size > 3)
+	{
+		while (size - i > 3 && i < size / 2)
+		{
+			if ((*a)->index < (int)size / 2)
+			{
+				i++;
+				pb(a, b);
+			}
+			else
+				ra(a);
+		}
+		while (++i <= size - 3)
+			pb(a, b);
+		sort_three(a);
+	}
 }

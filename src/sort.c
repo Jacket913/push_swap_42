@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:26:33 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/09/23 19:37:40 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/09/25 16:16:10 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,6 @@ void	assign_index(t_stack *a)
 	}
 }
 
-void	pre_sort(t_stack **a, t_stack **b)
-{
-	size_t	size;
-	size_t	i;
-
-	i = 0;
-	size = stack_size(*a);
-	assign_index(*a);
-	start_sort(a);
-	if (size > 3)
-	{
-		while (size - i > 3 && i < size / 2)
-		{
-			if ((*a)->index < (int)size / 2)
-			{
-				i++;
-				pb(a, b);
-			}
-			else
-				ra(a);
-		}
-		while (++i <= size - 3)
-			pb(a, b);
-		sort_three(a);
-	}
-}
-
 void	cost_and_sort(t_stack **a, t_stack **b)
 {
 	t_move	dir_a;
@@ -81,4 +54,28 @@ void	cost_and_sort(t_stack **a, t_stack **b)
 		if (dir_a.biggest)
 			sa(a);
 	}
+}
+
+void	sort_in_position(t_stack **a)
+{
+	t_stack		*tmp;
+	size_t		smallest_pos;
+	size_t		len;
+
+	tmp = *a;
+	len = 0;
+	smallest_pos = 0;
+	while (tmp)
+	{
+		if (tmp->index == 0)
+			smallest_pos = len;
+		len++;
+		tmp = tmp->next;
+	}
+	if ((len + 1) / 2 < smallest_pos)
+		while (smallest_pos++ < len)
+			rra(a);
+	else
+		while (smallest_pos-- > 0)
+			ra(a);
 }

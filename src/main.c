@@ -6,7 +6,7 @@
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:26:02 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/09/25 12:27:27 by gmoulin          ###   ########.fr       */
+/*   Updated: 2024/09/25 16:12:23 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,58 +30,6 @@ int	init_stack(int value, t_stack **a)
 		last = last->next;
 	last->next = tmp;
 	return (tmp->prev = last, 1);
-}
-
-int	check_arg(char *av, t_stack **a)
-{
-	char	*tmp;
-	int		x;
-	char	**split;
-	int		i;
-
-	split = ft_split(av, ' ');
-	if (!split || !split[0])
-		return (ft_fsplit(split), 0);
-	i = 0;
-	while (split[i])
-	{
-		x = ft_atoi(split[i]);
-		tmp = ft_itoa(x);
-		if (!tmp)
-			return (0);
-		if (ft_strncmp(tmp, split[i], ft_strlen(split[i])))
-			return (free(tmp), ft_fsplit(split), 0);
-		if (!init_stack(x, a))
-			return (free(tmp), ft_fsplit(split), 0);
-		free(tmp);
-		i++;
-	}
-	ft_fsplit(split);
-	return (1);
-}
-
-void	sort_in_position(t_stack **a)
-{
-	t_stack		*tmp;
-	size_t		smallest_pos;
-	size_t		len;
-
-	tmp = *a;
-	len = 0;
-	smallest_pos = 0;
-	while (tmp)
-	{
-		if (tmp->index == 0)
-			smallest_pos = len;
-		len++;
-		tmp = tmp->next;
-	}
-	if ((len + 1) / 2 < smallest_pos)
-		while (smallest_pos++ < len)
-			rra(a);
-	else
-		while (smallest_pos-- > 0)
-			ra(a);
 }
 
 void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
