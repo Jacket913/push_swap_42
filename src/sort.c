@@ -5,73 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 16:26:29 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/26 11:15:36 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 17:26:33 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/23 19:37:40 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	indexing(t_stack **a)
+void	assign_index(t_stack *a)
 {
-	t_stack	*lowest;
-	t_stack	*tmp;
-	int		i;
+	size_t	size;
+	int		min;
+	t_stack	*highest;
+	t_stack	*nbr;
 
-	i = 1;
-	while (i <= stacksize(*a))
+	size = stack_size(a);
+	while (--size)
 	{
-		tmp = *a;
-		lowest = *a;
-		while (lowest->index)
-			lowest = lowest->next;
-		while (tmp)
+		min = -2147483648;
+		highest = NULL;
+		nbr = a;
+		while (nbr)
 		{
-			if (lowest->value > tmp->value && !tmp->index)
-				lowest = tmp;
-			tmp = tmp->next;
+			if (min < nbr->value && !nbr->index)
+			{
+				min = nbr->value;
+				highest = nbr;
+			}
+			nbr = nbr->next;
 		}
-		lowest->index = i;
-		i++;
-	}
-}
-
-void	rotatelist(t_stack **x, t_move *m, int which_list)
-{
-	if (m->rotate > 0)
-	{
-		while (m->rotate-- > 0)
-		{
-			if (which_list == 0)
-				ra(x);
-			else
-				rb(x);
-		}
-	}
-	else
-	{
-		while (m->rotate++ < 0)
-		{
-			if (which_list == 0)
-				rra(x);
-			else
-				rrb(x);
-		}
+		highest->index = size;
 	}
 }
 
 void	pre_sort(t_stack **a, t_stack **b)
 {
-	int	i;
+	size_t	size;
+	size_t	i;
 
 	i = 0;
-	indexing(a);
+	size = stack_size(*a);
+	assign_index(*a);
 	start_sort(a);
-	if (stacksize(*a) > 3)
+	if (size > 3)
 	{
-		while (stacksize(*a) - i > 3 && i < stacksize(*a) / 2)
+		while (size - i > 3 && i < size / 2)
 		{
-			if ((*a)->index < stacksize(*a) / 2)
+			if ((*a)->index < (int)size / 2)
 			{
 				i++;
 				pb(a, b);
@@ -79,22 +59,26 @@ void	pre_sort(t_stack **a, t_stack **b)
 			else
 				ra(a);
 		}
-		while (++i <= stacksize(*a) - 3)
+		while (++i <= size - 3)
 			pb(a, b);
-		sort_3(a);
+		sort_three(a);
 	}
 }
 
-void	move_from_cheapest(t_stack **a, t_stack **b)
+void	cost_and_sort(t_stack **a, t_stack **b)
 {
-	t_move	move_a;
-	t_move	move_b;
+	t_move	dir_a;
+	t_move	dir_b;
 
 	while (*b)
 	{
-		cheaper_move(*a, *b, &move_a, &move_b);
-		rotatelist(a, &move_a, 0);
-		rotatelist(b, &move_b, 1);
+		dir_a.biggest = 0;
+		dir_b.biggest = 0;
+		cheapermove(*a, *b, &dir_a, &dir_b);
+		rotatelist(a, &dir_a, 1);
+		rotatelist(b, &dir_b, 0);
 		pa(a, b);
+		if (dir_a.biggest)
+			sa(a);
 	}
 }

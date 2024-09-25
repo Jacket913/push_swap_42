@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 16:32:13 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/26 11:41:11 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 17:26:02 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/25 12:27:27 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,26 +30,6 @@ int	init_stack(int value, t_stack **a)
 		last = last->next;
 	last->next = tmp;
 	return (tmp->prev = last, 1);
-}
-
-int	init(int value, t_stack **a)
-{
-	t_stack	*new;
-	t_stack	*oldlast;
-
-	if (!*a)
-		return (0);
-	oldlast = *a;
-	while (oldlast->next)
-		oldlast = oldlast->next;
-	new = ft_calloc(1, sizeof(t_stack));
-	if (!new)
-		return (0);
-	oldlast->next = new;
-	new->prev = oldlast;
-	new->value = value;
-	new->next = NULL;
-	return (1);
 }
 
 int	check_arg(char *av, t_stack **a)
@@ -104,26 +84,29 @@ void	sort_in_position(t_stack **a)
 			ra(a);
 }
 
-int	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
+void	push_swap(int ac, char *av[], t_stack **a, t_stack **b)
 {
 	int	i;
 
 	i = 0;
 	if (ac < 2)
-		return (0);
+		return ;
 	while (++i < ac)
 	{
 		if (!check_arg(av[i], a))
-			return (free_list(*a), error_arg(), 0);
+			(free_list(*a), error_arg());
 	}
 	if (check_dup(*a))
-		return (free_list(*a), free_list(*b), error_arg(), 0);
+		return (free_list(*a), free_list(*b), error_arg());
 	if (check_sorted(*a))
-		return (free_list(*a), free_list(*b), error_arg(), 0);
+		return (free_list(*a), free_list(*b));
+	if (check_sorted(*a))
+		return (free_list(*a));
 	pre_sort(a, b);
-	move_from_cheapest(a, b);
-	sort_in_position(a);
-	return (free_list(*a), free_list(*b), 1);
+	cost_and_sort(a, b);
+	if (!check_sorted(*a))
+		sort_in_position(a);
+	return (free_list(*a), free_list(*b));
 }
 
 int	main(int ac, char *av[])
@@ -134,7 +117,5 @@ int	main(int ac, char *av[])
 	a = NULL;
 	b = NULL;
 	push_swap (ac, av, &a, &b);
-	//(print(a), print(b));
-	(free_list(a), free_list(b));
-	return (1);
+	return (0);
 }

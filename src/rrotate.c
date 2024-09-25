@@ -5,55 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 16:26:46 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/30 16:55:38 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 18:29:23 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/23 18:29:25 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
 void	rra(t_stack **a)
 {
-	t_stack *nfirst;
-	t_stack *first;
+	t_stack	*tmp;
+	t_stack	*last;
 
-	if(!*a)
+	if (!(*a))
 		return ;
-	if (*a && (*a)->next)
+	if ((*a) && (*a)->next)
 	{
-		nfirst = *a;
-		first = *a;
-		while (nfirst->next)
-			nfirst = nfirst->next;
-		first->prev = nfirst;
-		nfirst->next = first;
-		*a = nfirst;
-		nfirst->prev->next = NULL;
-		nfirst->prev = NULL;
-		ft_putendl_fd("rra", 1);
+		last = dlstlast(*a);
+		tmp = last->prev;
+		last->prev = NULL;
+		last->next = (*a);
+		tmp->next = NULL;
+		(*a)->prev = last;
+		(*a) = last;
+		ft_printf("rra\n");
 	}
 }
 
 void	rrb(t_stack **b)
 {
-	t_stack *nfirst;
-	t_stack *first;
+	t_stack	*tmp;
+	t_stack	*last;
 
-	if(!*b)
+	if (!(*b))
 		return ;
-	if (*b && (*b)->next)
+	if ((*b) && (*b)->next)
 	{
-		nfirst = *b;
-		first = *b;
-		while (nfirst->next)
-			nfirst = nfirst->next;
-		first->prev = nfirst;
-		nfirst->next = first;
-		*b = nfirst;
-		nfirst->prev->next = NULL;
-		nfirst->prev = NULL;
-		ft_putendl_fd("rrb", 1);
+		last = dlstlast(*b);
+		tmp = last->prev;
+		last->prev = NULL;
+		last->next = (*b);
+		tmp->next = NULL;
+		(*b)->prev = last;
+		(*b) = last;
+		ft_printf("rrb\n");
 	}
 }
 
@@ -61,5 +56,5 @@ void	rrr(t_stack **a, t_stack **b)
 {
 	rra(a);
 	rrb(b);
-	ft_putendl_fd("rrr", 1);
+	ft_printf("rrr\n");
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 17:42:17 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/26 11:24:35 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 17:27:07 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/25 12:18:11 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,45 @@ void	free_list(t_stack *x)
 	}
 }
 
-int	stacksize(t_stack *stack)
+int	stack_size(t_stack *a)
 {
 	int	i;
 
 	i = 0;
-	while (stack)
+	while (a)
 	{
-		stack = stack->next;
+		a = a->next;
 		i++;
 	}
 	return (i);
 }
 
-//void	print(t_stack *x)
-//{
-//	t_stack	*tmp;
-
-//	tmp = x;
-//	while (tmp)
-//	{
-//		ft_printf("Value : %d,  Index : %d / ", tmp->value, tmp->index);
-//		tmp = tmp->next;
-//	}
-//	ft_putchar_fd('\n', 1);
-//}
-
-void	error_arg(void)
+t_stack	*dlstlast(t_stack *lst)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	if (!lst)
+		return (lst);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	dlstadd_front(t_stack **lst, t_stack *new)
+{
+	t_stack	*tmp;
+
+	tmp = *lst;
+	new->next = tmp;
+	new->prev = NULL;
+	if (tmp)
+		tmp->prev = new;
+	*lst = new;
+}
+
+void	print_stack(t_stack *a)
+{
+	while (a)
+	{
+		printf("Value: %d || Index: %d\n", a->value, a->index);
+		a = a->next;
+	}
 }

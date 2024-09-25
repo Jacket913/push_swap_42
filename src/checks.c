@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 14:05:58 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/19 19:06:19 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 19:17:14 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/23 19:21:01 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,21 @@ int	check_dup(t_stack *a)
 
 int	check_sorted(t_stack *a)
 {
-	t_stack	*tmp;
+	int	i;
 
+	i = a->value;
 	while (a)
 	{
-		tmp = (a)->next;
-		while (tmp)
-		{
-			if ((a)->value > tmp->value)
-				return (0);
-			tmp = tmp->next;
-		}
-		a = (a)->next;
+		if (i > a->value)
+			return (0);
+		i = a->value;
+		a = a->next;
 	}
 	return (1);
+}
+
+void	error_arg(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

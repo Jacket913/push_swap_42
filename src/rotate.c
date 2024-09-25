@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 16:26:38 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/05/30 16:04:27 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 17:26:18 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/25 12:31:40 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ra(t_stack **a)
 {
-	t_stack *nlast;
-	t_stack *last;
+	t_stack	*nlast;
+	t_stack	*last;
 
-	if(!*a || !(*a)->next)
+	if (!*a || !(*a)->next)
 		return ;
 	nlast = *a;
 	last = *a;
@@ -33,26 +33,24 @@ void	ra(t_stack **a)
 
 void	rb(t_stack **b)
 {
-	t_stack *nlast;
-	t_stack *last;
+	t_stack	*tmp;
+	t_stack	*last;
 
-	if(!*b || !(*b)->next)
+	if (!(*b))
 		return ;
-	nlast = *b;
-	last = *b;
-	while (last->next)
-		last = last->next;
-	last->next = nlast;
-	nlast->prev = last;
-	*b = nlast->next;
-	nlast->next = NULL;
-	(*b)->prev = NULL;
-	ft_putendl_fd("rb", 1);
+	tmp = (*b)->next;
+	last = dlstlast(*b);
+	tmp->prev = NULL;
+	(*b)->next = NULL;
+	(*b)->prev = last;
+	last->next = (*b);
+	(*b) = tmp;
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack **a, t_stack **b)
 {
 	ra(a);
 	rb(b);
-	ft_putendl_fd("rr", 1);
+	ft_printf("rr\n");
 }

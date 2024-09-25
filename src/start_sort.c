@@ -5,42 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmoulin <gmoulin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/11 14:09:32 by gmoulin           #+#    #+#             */
-/*   Updated: 2024/06/12 17:19:05 by gmoulin          ###   ########.fr       */
+/*   Created: 2024/09/23 17:26:42 by gmoulin           #+#    #+#             */
+/*   Updated: 2024/09/25 12:30:50 by gmoulin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_2(t_stack **a)
+void	sort_two(t_stack **a)
 {
 	if ((*a)->value > (*a)->next->value)
 		sa(a);
 }
 
-void	sort_3(t_stack **a)
+void	sort_three(t_stack	**a)
 {
-	if ((*a)->value > (*a)->next->value &&
+	if ((*a)->value > (*a)->next->value && \
 		(*a)->value > (*a)->next->next->value)
 	{
 		ra(a);
-		sort_2(a);
+		sort_two(a);
 	}
-	else if ((*a)->value < (*a)->next->value &&
+	else if ((*a)->value < (*a)->next->value && \
 		(*a)->next->value > (*a)->next->next->value)
 	{
 		rra(a);
-		sort_2(a);
+		sort_two(a);
 	}
-	else if ((*a)->value < (*a)->next->next->value &&
+	else if ((*a)->value < (*a)->next->next->value && \
 		(*a)->next->value < (*a)->next->next->value)
-		sort_2(a);
+		sort_two(a);
 }
 
 void	start_sort(t_stack **a)
 {
-	if (stacksize(*a) == 2)
-		sort_2(a);
-	else if (stacksize(*a) == 3)
-		sort_3(a);
+	if (stack_size(*a) == 2)
+		sort_two(a);
+	else if (stack_size(*a) == 3)
+		sort_three(a);
 }
